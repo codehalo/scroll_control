@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <script type="text/javascript">
+
+      function refreshWindowLayout() {
+          var wd = document.getElementById("window-data");
+          var winHead = document.getElementById("window-head");
+          var winBodyContainer = document.getElementById("window-body-container");
+          //var numBoxes = ~~(window.innerWidth / 270); //like math floor
+          var numBoxes = Math.floor((winBodyContainer.offsetWidth) / 270); //like math floor
+
+          winHead.style.width = (numBoxes * 270) + "px";
+          
+          wd.textContent = "" + winBodyContainer.offsetWidth + " numboxes: " + numBoxes;
+      
+      }
+
+
+      window.onload = function() {
+      	document.body.onresize = refreshWindowLayout;
+          refreshWindowLayout();
+      };
+
+      
+    </script>
+    
+    <style type="text/css" media="screen">
+
+      .window-head-container, .window-body-container {
+                width : fit-content;
+               width: -moz-fit-content;
+               margin : 0 auto;
+
+      padding : 0;
+        }
+
+      .window-body-container {
+      border : 1px solid #ccc;
+      overflow-x:hidden;
+          height : 600px;
+          overflow-y : hidden;
+      }
+
+    .window-head {
+		height : 50px;
+    	background-color : #9ab;
+    	margin : 0 auto;
+    	padding : 0;
+
+    }
+    
+      .boxes {
+		list-style-type : none;
+
+        text-align : center;
+        margin : 0 auto;
+        padding : 0;
+        width : fit-content;
+         width: -moz-fit-content;
+    	/*padding-left : 13px;*/
+      }
+
+      .boxes li {
+          display : inline-block;
+          width : 270px;
+          height : 270px;
+          border : none;
+          background-color : #efefef;
+          padding : 0;
+          margin : 0;
+      }
+      
+    </style>
+  </head>
+  <body>
+    <div id="window-head-container" class="window-head-container">
+  	  <div id="window-head" class="window-head">
+		close
+      </div>    
+    </div>
+  
+    <div id="window-body-container" class="window-body-container">
+      <ul id="boxes" class="boxes">
+      <li>one</li><li>two</li><li>three</li><li>four</li><li>five</li><li>six</li><li>one</li><li>two</li><li>three</li><li>four</li><li>five</li><li>six</li>        
+      </ul>  
+    </div>
+
+    <div id="window-data">
+      
+    </div>
+  </body>
+    <script type="text/javascript">
+
+    </script>
+</html>
